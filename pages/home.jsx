@@ -1,28 +1,16 @@
-const Home = () => {
-    const posts = [
-        {
-            title: "First Post",
-            body: "This is the body",
+import CreatePost from "../components/CreatePost";
+import Navbar from "../components/Navbar";
+import Posts from "../components/Posts";
 
-        },
-        {
-            title: "Second Post",
-            body: "This is the body of second ",
-        }
-    ]
+const Home = () => {
+    
+
 
     return (
         <div>
-            {
-                posts.map((post) => {
-                    return (
-                        <div>
-                            
-                        </div>
-                    )
-                })
-            }
-
+            <Navbar />
+                <CreatePost />
+            <Posts />
         </div>
     );
 

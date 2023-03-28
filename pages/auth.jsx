@@ -6,28 +6,24 @@ import SignUp from "../components/SignUp.jsx";
 const Auth = () => {
 
 
-    const [showSignUpForm, setShowSignUpForm] = useState(true)
+    const [showSignInForm, setShowSignInForm] = useState(true)
 
 
 
 
     return (
-        <div>
+        <div className="min-h-screen flex flex-col justify-center items-center">
 
-            <div>
-                <button onClick={() => {
-
-                    setShowSignUpForm(!showSignUpForm)
-
-                }} className="px-2 py-2 bg-teal-700 text-white
-                mt-8"> Dont have an account ?</button>
-            </div>
-
+        
             {
-                (showSignUpForm) ? (
-                    <SignIn />
+                (showSignInForm) ? (
+                    <SignIn signUpRequest={()=>{
+                        setShowSignInForm(false)
+                    }}/>
                 ) : (
-                    <SignUp />
+                    <SignUp signInRequest={()=>{
+                        setShowSignInForm(true)
+                    }} />
                 )
             }
         </div>

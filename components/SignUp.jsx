@@ -1,50 +1,69 @@
-const SignUp = () => {
-    let username=""
-    let password=""
-    let confirmpassword=""
+import { useRouter } from "next/router"
+import { useContext, useRef } from "react"
+import { authContext } from "../contexts/AuthContextWrapper"
+
+const SignUp = ({signInRequest}) => {
+    const username = useRef()
+    const password = useRef()
+    const password_repeat = useRef()
+    const auth = useContext(authContext)
+
+    const signUp = async()=>{
+        const router = useRouter()
+        const usernameval = username.current.value
+        const passwordval = password.current.value
+        const password_repeatval = password_repeat.current.value
+        if(usernameval != "" && passwordval != "" && password_repeatval != ""){
+                const isSuccess = await auth.signUp(usernameval, passwordval, password_repeatval)
+                if(isSuccess){
+                    router.push('/home')
+                }else{
+                    console.log("Oops!..something went wrong . Please try again later")
+                }
+        }else{
+            console.log("Please fill out all the fields")
+        }
+        
+    }
 
     return (
         <div>
             <div>
                 <div className="text-5xl">
-                    Welcome Back
+                    Create a new Account
                 </div>
 
                 <div className="mt-8">
                     <div className="">
-                    <input type="text" onChange={(e)=>{
-                        username=e.target.value
-                    }}
+                        <input type="text" ref={username}
 
-                         className="px-2 py-2 border-black border-2" placeholder="Enter the user id" />
+                            className="w-full px-2 py-2 border-black border-2" placeholder="Enter the user name" />
                     </div>
                     <div className="mt-4">
-                        <input onChange={(e)=>{
-                            password=e.target.value
-                        }}
+                        <input ref = {password}
 
-                         type="password" className="px-2 py-2 border-black border-2" placeholder="Enter the password" />
+                            type="password" className="w-full px-2 py-2 border-black border-2" placeholder="Enter the password" />
                     </div>
 
                     <div className="mt-4">
-                        <input onchange={(e)=>{
-                            confirmpassword=e.target.value
-                        }}
-                        type="text" className="px-2 py-2 border-black border-2" placeholder="Enter the password again" />
+                        <input ref = {password_repeat}
+                            type="text" className="w-full px-2 py-2 border-black border-2" placeholder="Enter the password again" />
 
                     </div>
 
                 </div>
 
-                <button className="px-2 py-2 bg-teal-700 text-white
-mt-8">  onclick={()=>{
-    console.log(username)
-    console.log(password)
-    console.log(confirmpassword)
-}
-}
-                    SIGN Up
-                </button>
+                <div className="flex justify-between">
+                    <button className="px-2 py-2 bg-teal-700 text-white mt-8" onClick={() => {
+                        signUp()    
+                    }
+                    }>
+                        SIGN UP
+                    </button>
+                    <button className="mt-8" onClick={signInRequest}>
+                        Already have an account ?
+                    </button>
+                </div>
             </div>
 
         </div>
