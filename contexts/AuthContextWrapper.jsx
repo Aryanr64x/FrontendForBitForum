@@ -25,12 +25,14 @@ const AuthContextWrapper = ({ children }) => {
 
     const signIn = async (username, password) => {
         try {
+
             const resp = await axios.post(BASE_URL + "/signin", { username, password })
             setToken(resp.data.token)
             setUser(resp.data.user)
             putInLocalStorage(resp.data.token, resp.data.user)
-
             return true
+
+            
         } catch (e) {
             console.log(e)
             return false

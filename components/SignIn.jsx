@@ -51,7 +51,7 @@ const SignIn = ({signUpRequest}) => {
             </button>
 
             <button className="mt-8" onClick={signUpRequest}>
-                Don't have an account ?
+                Dont have an account ?
             </button>
          </div>
         </div>

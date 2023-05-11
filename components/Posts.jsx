@@ -36,7 +36,7 @@ const Posts = () => {
                             (<p>
                                 {
                                     postsContainer.posts.map((post)=>{
-                                        return <div onClick={()=>{router.push('/post/'+post._id)}}>
+                                        return <div onClick={()=>{router.push('/post/'+post._id)}} key={post._id}>
                                              <SinglePost post = {post} />
                                         </div>
                                     })

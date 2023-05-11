@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -8,9 +9,9 @@ export default function Home() {
             </div>
 
             <div className="mt-16">
-              <a  className="px-4 py-4 bg-teal-400 " href="/auth">
+              <Link  className="px-4 py-4 bg-teal-400 " href="/auth">
                   SIGN IN 
-              </a>
+              </Link>
            
             </div>
       </div>
