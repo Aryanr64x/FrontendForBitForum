@@ -6,7 +6,7 @@ const Comments = ({ comments }) => {
             {
                 comments.map((comment) => {
                         return (
-                            <div>
+                            <div key={comment._id}>
                                     { 
                                         comment.body
                                     }
