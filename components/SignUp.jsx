@@ -1,19 +1,18 @@
 import { useContext, useRef } from "react"
 import { useRouter } from "next/router"
-
 import { authContext } from "../contexts/AuthContextWrapper"
 
 const SignUp = ({signInRequest}) => {
     const username = useRef()
     const password = useRef()
     const password_repeat = useRef()
-
+    const router = useRouter()
 
 
     const auth = useContext(authContext)
 
     const signUp = async()=>{
-        const router = useRouter()
+       
         const usernameval = username.current.value
         const passwordval = password.current.value
         const password_repeatval = password_repeat.current.value
