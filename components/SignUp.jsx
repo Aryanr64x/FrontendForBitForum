@@ -50,7 +50,7 @@ const SignUp = ({signInRequest}) => {
 
                     <div className="mt-4">
                         <input ref = {password_repeat}
-                            type="text" className="w-full px-2 py-2 border-black border-2" placeholder="Enter the password again" />
+                            type="password" className="w-full px-2 py-2 border-black border-2" placeholder="Enter the password again" />
 
                     </div>
 

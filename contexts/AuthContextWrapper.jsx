@@ -45,11 +45,13 @@ const AuthContextWrapper = ({ children }) => {
     const signUp = async (username, password, password_repeat) => {
         try {
             const resp = await axios.post(BASE_URL + "/signup", { username, password, password_repeat })
-            setToken(resp.data.data.token)
-            setUser(resp.data.data.user)
+            console.log(resp)
+            setToken(resp.data.token)
+            setUser(resp.data.user)
             putInLocalStorage(resp.data.token, resp.data.user)
-
             return true
+
+
         } catch (e) {
             console.log(e)
             return false
